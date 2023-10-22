@@ -1,30 +1,33 @@
 /* eslint-disable react/prop-types */
-// import './styles/main.scss';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './styles/app.module.css';
 
-function App({ string }) {
-  console.log(styles)
-
+function App() {
   return (
     <>
-      <p className={styles.paragraph}>Testing testing</p>
-      <button>
-        <Link to='profile'>
-          Profile page
-        </Link>
-      </button>
+      <main>
+        <h1>Welcome</h1>
+        <button>
+          <Link to='/itemcart'>Item cart</Link>
+        </button>
+        <button>
+          <Link to='usercart'>Shop cart</Link>
+        </button>
+        <button>
+          <Link to='login'>Log in</Link>
+        </button>
+      </main>
     </>
   );
 }
 
-App.propTypes = {
-  string: PropTypes.string.isRequired,
-};
-
-App.defaultProps = {
-  string: 'Default value',
-};
-
 export default App;
+
+// App.propTypes = {
+//   string: PropTypes.string.isRequired,
+// };
+
+// App.defaultProps = {
+//   string: 'Default value',
+// };
