@@ -1,0 +1,19 @@
+:root {
+  --color-font-main: rgb(28, 22, 83);
+  --color-font-secondary: rgb(48, 48, 48);
+  --color-background: rgb(228, 230, 151);
+
+  --color-dm-font-m: rgb(201, 201, 201);
+  --color-dm-font-sec: rgb(187, 187, 187);
+  --color-dm-background: rgb(61, 54, 54);
+}
+
+.darkMode {
+  color: var(--color-dm-font-m);
+  background-color: var(--color-dm-background);
+}
+
+.lightMode {
+  color: var(--color-font-main);
+  background-color: var(--color-background);
+}

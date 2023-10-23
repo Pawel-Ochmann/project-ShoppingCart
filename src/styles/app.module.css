@@ -1,3 +1,11 @@
-.paragraph {
-    color:yellow;
+@import url('./variables.css');
+
+.darkMode {
+  color: var(--color-dm-font-m);
+  background-color: var(--color-dm-background);
+}
+
+.lightMode {
+  color: var(--color-font-main);
+  background-color: var(--color-background);
 }
