@@ -1,1 +1,8 @@
 @import url('./variables.css');
+
+form {
+    display:flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width:400px;
+}

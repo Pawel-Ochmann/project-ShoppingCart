@@ -8,18 +8,20 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 
 function App() {
   const theme = useContext(darkMode);
+  const login = useContext(loggedMode);
+
   return (
     <main className={theme.isDark ? styles.darkMode : styles.lightMode}>
       <ThemeSwitcher />
+      <button>
+        <Link to='login'>{login ? 'User is logged' : 'Log in'}</Link>
+      </button>
       <h1>Welcome</h1>
       <button>
         <Link to='/itemcart'>Item cart</Link>
       </button>
       <button>
         <Link to='usercart'>Shop cart</Link>
-      </button>
-      <button>
-        <Link to='login'>Log in</Link>
       </button>
     </main>
   );
