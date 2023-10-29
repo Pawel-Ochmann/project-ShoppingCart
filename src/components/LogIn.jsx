@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/login.module.css';
 import { useContext } from 'react';
-import { isDarkMode } from '../App';
+import { darkMode, loggedMode } from '../Context';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function LogIn() {
-   const isDark = useContext(isDarkMode);
+   const theme = useContext(darkMode);
   return (
-    <section className={isDark ? styles.darkMode : styles.lightMode}>
+    <section className={theme.isDark ? styles.darkMode : styles.lightMode}>
+      <ThemeSwitcher />
       <h1>Do you wish to log in?</h1>
       <button>
         <Link to='/'>Go back to main page</Link>
