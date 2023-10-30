@@ -13,8 +13,8 @@ function App() {
   return (
     <main className={theme.isDark ? styles.darkMode : styles.lightMode}>
       <ThemeSwitcher />
-      <button>
-        <Link to='login'>{login ? 'User is logged' : 'Log in'}</Link>
+      <button data-testid='login'>
+        <Link to='login'>{login.isLogged || 'Log in'}</Link>
       </button>
       <h1>Welcome</h1>
       <button>
