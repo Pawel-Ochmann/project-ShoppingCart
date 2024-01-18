@@ -11,7 +11,7 @@ export default function LogIn() {
   const login = useContext(loggedMode);
   const [email, setEmail] = useState(localStorage.getItem('email') || '');
   const [password, setPassword] = useState(localStorage.getItem('password') || '');
-  const [remember, setRemember] = useState(false);
+  const [remember, setRemember] = useState(localStorage.getItem('email') ? true: false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
@@ -46,7 +46,6 @@ export default function LogIn() {
     const isEmailValidate = validateEmail(email);
 
     const isPasswordValidate = validatePassword(password);
-    console.log(login);
     if (!isEmailValidate || !isPasswordValidate) {
       if (!isEmailValidate) {
         setEmailError(true);
@@ -59,6 +58,7 @@ export default function LogIn() {
 
     if (isEmailValidate && isPasswordValidate) {
       login.setIsLogged(email);
+      sessionStorage.setItem('user', email);
       if (remember) {
         localStorage.setItem('email', email);
         localStorage.setItem('password', password);
@@ -75,7 +75,7 @@ export default function LogIn() {
         'You have been logged'
       ) : (
         <form action='' onSubmit={handleLogin} role='form'>
-          <h1>Sign in to your account</h1>
+          <h1>Sign in</h1>
           <label htmlFor='email'>Your email: </label>
           <input
             type='text'

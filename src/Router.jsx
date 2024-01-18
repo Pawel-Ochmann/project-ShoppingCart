@@ -4,7 +4,7 @@ import UserCart from './components/UserCart.jsx';
 import LogIn from './components/LogIn.jsx';
 import App from './App.jsx';
 
-const router = createBrowserRouter([
+export const routes = [
   {
     path: '/',
     element: <App />,
@@ -21,7 +21,10 @@ const router = createBrowserRouter([
     path: '/login',
     element: <LogIn />,
   },
-]);
+];
+
+
+const router = createBrowserRouter(routes);
 
 const Router = ()=> {
     return (
