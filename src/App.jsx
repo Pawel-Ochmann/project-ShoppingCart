@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { darkMode, loggedMode } from './Context';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import ChampionList from './components/ChampionList';
+import UserCart from './components/UserCart';
 
 function App() {
   const theme = useContext(darkMode);
@@ -34,6 +35,7 @@ function App() {
   return (
     <main className={theme.isDark ? styles.darkMode : styles.lightMode}>
       <ThemeSwitcher />
+      <UserCart />
       {login.isLogged ? (
         <p>Welcome {login.isLogged}</p>
       ) : (
@@ -43,9 +45,6 @@ function App() {
       )}
       <button>
         <Link to='/itemcart'>Item cart</Link>
-      </button>
-      <button>
-        <Link to='usercart'>Shop cart</Link>
       </button>
       <ChampionList championList={championList} />
     </main>

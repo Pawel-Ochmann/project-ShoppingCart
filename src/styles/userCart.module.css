@@ -1,1 +1,19 @@
 @import url('./variables.css');
+
+.cartIcon {
+    cursor: pointer;
+}
+
+.cart {
+    width: 200px;
+    min-height: 500px;
+    background-color: rgb(40, 56, 12);
+    color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: .5s;
+}
+.cartHidden {
+    transform:translateX(500px);
+}

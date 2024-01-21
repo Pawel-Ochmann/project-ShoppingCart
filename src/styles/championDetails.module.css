@@ -1,0 +1,15 @@
+.detailsBox {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    min-height: 100dvh;
+    & img {
+        width: 100%;
+    }
+    & button {
+        width: max-content;
+        align-self: center;
+    }
+}
+

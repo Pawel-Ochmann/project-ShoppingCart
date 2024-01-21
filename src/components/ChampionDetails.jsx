@@ -1,20 +1,34 @@
 import { useContext, useEffect } from 'react';
 import { darkMode } from '../Context';
+import styles from '../styles/championDetails.module.css';
 
-export default function ChampionDetails({ champion, detailsHandler }) {
+export default function ChampionDetails({
+  champion,
+  imageUrl,
+  detailsHandler,
+  runTransition,
+}) {
   const theme = useContext(darkMode);
-
+  useEffect(()=> {
+    console.log(champion, imageUrl);
+  })
   return (
-    <div>
+    <div className={`${styles.detailsBox}`}>
       <h3>{champion.id}</h3>
       <p>{champion.title}</p>
       <p>{champion.blurb}</p>
-      <img
-        src={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`}
-        alt=''
-        width={200}
-      />
-      <button onClick={()=>{detailsHandler(null)}}>Close details</button>
+      <img src={imageUrl} alt='' />
+      <button
+        onClick={() => {
+          runTransition(false);
+          setTimeout(() => {
+            detailsHandler(null);
+          }, 500);
+          setTimeout(() => runTransition(true), 500);
+        }}
+      >
+        Close details
+      </button>
     </div>
   );
 }

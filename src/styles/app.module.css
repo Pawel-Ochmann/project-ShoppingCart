@@ -1,5 +1,13 @@
 @import url('./variables.css');
 
+* {
+  box-sizing: border-box;
+}
+body {
+  max-width: 80dvw;
+  min-height: 100vh;
+}
+
 .darkMode {
   color: var(--color-dm-font-m);
   background-color: var(--color-dm-background);
