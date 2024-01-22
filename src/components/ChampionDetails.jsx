@@ -1,5 +1,5 @@
-import { useContext, useEffect } from 'react';
-import { darkMode } from '../Context';
+import { useContext, useEffect, useState } from 'react';
+import { darkMode, shopItems } from '../Context';
 import styles from '../styles/championDetails.module.css';
 
 export default function ChampionDetails({
@@ -8,16 +8,29 @@ export default function ChampionDetails({
   detailsHandler,
   runTransition,
 }) {
+  const { items, setItems } = useContext(shopItems);
+  const [isAdded, setIsAdded] = useState(false);
   const theme = useContext(darkMode);
-  useEffect(()=> {
-    console.log(champion, imageUrl);
-  })
+
+  useEffect(() => {
+    const checkItems = items.find((item) => item === champion);
+    setIsAdded(checkItems);
+  }, [items, champion]);
+
+  const handlePurchase = () => {
+    if (isAdded) {
+      const index = items.findIndex((item) => item === champion);
+      const updatedItems = [...items];
+      updatedItems.splice(index, 1);
+      setItems(updatedItems);
+    } else {
+      setItems((prevItems) => [...prevItems, champion]);
+    }
+    setIsAdded(!isAdded);
+  };
+
   return (
     <div className={`${styles.detailsBox}`}>
-      <h3>{champion.id}</h3>
-      <p>{champion.title}</p>
-      <p>{champion.blurb}</p>
-      <img src={imageUrl} alt='' />
       <button
         onClick={() => {
           runTransition(false);
@@ -28,6 +41,13 @@ export default function ChampionDetails({
         }}
       >
         Close details
+      </button>
+      <h3>{champion.champion.name}</h3>
+      <p>{champion.champion.title}</p>
+      <p>{champion.champion.blurb}</p>
+      <img src={imageUrl} alt='' />
+      <button onClick={handlePurchase}>
+        {isAdded ? 'Remove' : 'Purchase'}
       </button>
     </div>
   );

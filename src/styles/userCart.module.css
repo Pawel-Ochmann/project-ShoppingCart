@@ -1,19 +1,30 @@
 @import url('./variables.css');
 
 .cartIcon {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cart {
-    width: 200px;
-    min-height: 500px;
-    background-color: rgb(40, 56, 12);
-    color: white;
-    position: fixed;
-    top: 0;
-    right: 0;
-    transition: .5s;
+  width: 200px;
+  min-height: 500px;
+  background-color: rgb(40, 56, 12);
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: 0.5s;
 }
 .cartHidden {
-    transform:translateX(500px);
+  transform: translateX(500px);
+}
+
+.itemList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.champinBox {
+  display: flex;
+  flex-direction: column;
 }

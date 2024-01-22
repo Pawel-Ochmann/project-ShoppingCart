@@ -23,10 +23,10 @@ function App() {
         }
 
         const list = await response.json();
-        setChampionList(list.data)
+        setChampionList(list.data);
       } catch (error) {
-      console.log(error)
-      } 
+        console.log(error);
+      }
     };
 
     fetchData();
@@ -43,9 +43,6 @@ function App() {
           <button data-testid='login'>'Log in'</button>
         </Link>
       )}
-      <button>
-        <Link to='/itemcart'>Item cart</Link>
-      </button>
       <ChampionList championList={championList} />
     </main>
   );

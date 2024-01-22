@@ -17,6 +17,7 @@ export default function ChampionList({ championList }) {
   const [showDetailsPage, setShowDetailsPage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 
+
   return (
     <>
       <h1>Champion List</h1>
