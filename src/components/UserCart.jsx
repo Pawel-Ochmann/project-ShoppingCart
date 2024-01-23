@@ -56,9 +56,10 @@ export default function UserCart() {
         onClick={handleCartIconClick}
       />
       <p>({items.length})</p>
+      <div className={`${styles.backdrop} ${!isClosed && styles.backdropVisible}`}></div>
       <div
         ref={cartRef}
-        className={`${styles.cart} ${isClosed ? styles.cartHidden : ''}`}
+        className={`${styles.cart} ${isClosed ? styles.cartHidden : styles.cartVisible}`}
       >
         <h2>{items.length} {items.length === 1 ? 'Champion' : 'Champions'}</h2>
         <button
@@ -88,6 +89,7 @@ export default function UserCart() {
           ))}
         </div>
         <p>{`Total: ${items.length * 50}$`}</p>
+        <button>Buy</button>
       </div>
     </>
   );
