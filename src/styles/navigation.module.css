@@ -1,10 +1,60 @@
 .darkMode {
-
 }
 .lightMode {
+}
+.nav {
+  padding: var(--padding-main);
+  width: 100%;
+  display: flex;
+}
 
+.iconMain {
+    margin-right: auto;
+  & img {
+    width: 10rem;
+  }
+}
+
+.navListButton {
+    background-color: white;
+    width: 4rem;
+    height: 4rem;
+    border: 3px solid black;
+    border-radius: 100rem;
+    font-size: 2rem;
+    color: black;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 5dvw;
+    & svg {
+        aspect-ratio: 1;
+    }
+    &.hidden {
+        display: none;
+    }
 }
 
 .navList {
-    background-color: white;
+    color: white;
+    background-color: black;
+    border-radius: 1000rem;
+    display: flex;
+    aspect-ratio: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    position: fixed; /* Use fixed position */
+    top: 0;
+    right: 0;
+}
+
+.navList a {
+    color: white;
+    width: max-content;
+}
+
+.navList.hidden {
+    transform: translate(100%, 100%); /* Move it out of the screen */
 }

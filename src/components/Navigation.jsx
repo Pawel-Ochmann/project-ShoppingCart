@@ -1,35 +1,46 @@
 import { Link } from 'react-router-dom';
-
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { darkMode, loggedMode } from '../Context';
 import ThemeSwitcher from './ThemeSwitcher';
 import UserCart from './UserCart';
+import styles from '../styles/navigation.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-export default function Navigation() {
+export default function Navigation({ linkTo }) {
   const theme = useContext(darkMode);
   const login = useContext(loggedMode);
+  const [navHidden, setNavHidden] = useState(true);
 
   return (
     // <div className={theme.isDark ? styles.darkMode : styles.lightMode}>
-    <div>
-      <img
-        src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/League_of_Legends_2019_vector.svg/240px-League_of_Legends_2019_vector.svg.png'
-        alt=''
-      />
+    <div className={styles.nav}>
+      <Link className={styles.iconMain} to='/'>
+        <img
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/League_of_Legends_2019_vector.svg/240px-League_of_Legends_2019_vector.svg.png'
+          alt=''
+        />
+      </Link>
       <UserCart />
-
-      <div>
-          <Link to='champions'><button>Store</button></Link>
-          <ThemeSwitcher />
-          {login.isLogged ? (
-            <p>{login.isLogged}</p>
-          ) : (
-            <Link to='login'>
-              <button data-testid='login'> Log in</button>
-            </Link>
-          )}
+      <button onClick={()=>{setNavHidden(false)}} className={`${styles.navListButton}  ${navHidden ? '' : styles.hidden}`}>
+        <FontAwesomeIcon
+          icon={faBars}
+        />
+      </button>
+      <div className={`${styles.navList} ${navHidden && styles.hidden}`}>
+        <button onClick={()=>{setNavHidden(true)}}>X</button>
+        <Link to={linkTo}>
+          <button>{linkTo === 'champions' ? 'Store' : 'Main Page'}</button>
+        </Link>
+        <ThemeSwitcher />
+        {login.isLogged ? (
+          <p>{login.isLogged}</p>
+        ) : (
+          <Link to='login'>
+            <button data-testid='login'> Log in</button>
+          </Link>
+        )}
       </div>
     </div>
   );
 }
-

@@ -2,18 +2,24 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
 body {
-  max-width: 80dvw;
-  min-height: 100vh;
+  color: var(--color-font-main);
+  background-color: var(--color-background);
+  font-family: main;
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
 }
 
 .darkMode {
-  color: var(--color-dm-font-m);
   background-color: var(--color-dm-background);
 }
 
 .lightMode {
-  color: var(--color-font-main);
-  background-color: var(--color-background);
 }

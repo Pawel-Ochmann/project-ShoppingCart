@@ -50,12 +50,14 @@ export default function UserCart() {
 
   return (
     <>
-      <FontAwesomeIcon
-        icon={faCartShopping}
-        className={styles.cartIcon}
-        onClick={handleCartIconClick}
-      />
-      <p>({items.length})</p>
+      <div className={styles.cartIcon}>
+        <FontAwesomeIcon
+          icon={faCartShopping}
+          className={styles.cartIcon}
+          onClick={handleCartIconClick}
+        />
+        <p>{items.length < 1 ? '' : `(${items.length})`}</p>
+      </div>
       <div className={`${styles.backdrop} ${!isClosed && styles.backdropVisible}`}></div>
       <div
         ref={cartRef}

@@ -10,7 +10,7 @@ function App() {
 
   return (
     <main className={theme.isDark ? styles.darkMode : styles.lightMode}>
-      <Navigation />
+      <Navigation linkTo='champions' />
     </main>
   );
 }
