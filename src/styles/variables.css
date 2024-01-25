@@ -2,6 +2,10 @@
   font-family: main;
   src: url('./fonts/main/CormorantGaramond-Light.ttf');
 }
+@font-face {
+  font-family: nav;
+  src: url('./fonts/navFont/Roboto-Regular.ttf');
+}
 
 :root {
   --color-font-main: #775e11;

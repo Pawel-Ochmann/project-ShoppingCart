@@ -1,7 +1,5 @@
-.darkMode {
-}
-.lightMode {
-}
+@import url('./variables.css');
+
 .nav {
   padding: var(--padding-main);
   width: 100%;
@@ -9,52 +7,98 @@
 }
 
 .iconMain {
-    margin-right: auto;
+  margin-right: auto;
   & img {
     width: 10rem;
   }
 }
 
 .navListButton {
-    background-color: white;
-    width: 4rem;
-    height: 4rem;
-    border: 3px solid black;
-    border-radius: 100rem;
-    font-size: 2rem;
-    color: black;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 5dvw;
-    & svg {
-        aspect-ratio: 1;
-    }
-    &.hidden {
-        display: none;
-    }
+  background-color: white;
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  font-size: 2rem;
+  color: black;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 5dvw;
+  transition: 1s;
+  & svg {
+    aspect-ratio: 1;
+  }
+  &.hidden {
+    opacity: 0;
+  }
 }
 
 .navList {
-    color: white;
-    background-color: black;
-    border-radius: 1000rem;
-    display: flex;
-    aspect-ratio: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    position: fixed; /* Use fixed position */
-    top: 0;
-    right: 0;
+  width: 400%;
+  color: white;
+  background-color: #1f1f1f;
+  border-radius: 1000rem;
+  display: flex;
+  aspect-ratio: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: fixed; /* Use fixed position */
+  top: -500px;
+  right: -500px;
+  transition: 1.5s;
 }
 
 .navList a {
-    color: white;
-    width: max-content;
+  color: white;
+  width: max-content;
 }
 
 .navList.hidden {
-    transform: translate(100%, 100%); /* Move it out of the screen */
+  transform: translate(100%, 100%); /* Move it out of the screen */
 }
+
+.navListContainer {
+  position: fixed;
+  display: flex;
+  gap: 3rem;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  &.hidden {
+    display: none;
+  }
+  & .xButton {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: 900;
+    color: var(--color-dm-font-m);
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  & button {
+    color: white;
+    font-size: 2rem;
+    font-family: nav, sans-serif;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 900;
+    border: none;
+    z-index: 1000;
+  }
+  & .loginContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
