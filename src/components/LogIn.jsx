@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from '../styles/login.module.css';
 import { useContext, useState } from 'react';
 import { darkMode, loggedMode } from '../Context';
-import ThemeSwitcher from './ThemeSwitcher';
+import Navigation from './Navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,6 +14,8 @@ export default function LogIn() {
   const [remember, setRemember] = useState(localStorage.getItem('email') ? true: false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+
+
 
   const handleEmailInput = (e) => {
     e.preventDefault();
@@ -69,12 +71,15 @@ export default function LogIn() {
   };
 
   return (
-    <section className={theme.isDark ? styles.darkMode : styles.lightMode}>
-      <ThemeSwitcher />
-      {login.isLogged ? (
-        'You have been logged'
-      ) : (
-        <form action='' onSubmit={handleLogin} role='form'>
+    <div className={theme.isDark ? styles.darkMode : styles.lightMode}>
+      <Navigation />
+      <section>
+        <form
+          action=''
+          onSubmit={handleLogin}
+          role='form'
+          className={theme.lightMode ? styles.lightMode : ''}
+        >
           <h1>Sign in</h1>
           <label htmlFor='email'>Your email: </label>
           <input
@@ -94,22 +99,20 @@ export default function LogIn() {
             onChange={handlePasswordInput}
           />
           {passwordError && <p>Your temporary password is: "password"</p>}
-          <input
-            type='checkbox'
-            id='remember'
-            checked={remember}
-            onChange={handleRememberInput}
-          />
-          <label htmlFor='remember'>Remember me</label>
+          <div className={styles.rememberBox}>
+            <label htmlFor='remember'>Remember me</label>
+            <input
+              type='checkbox'
+              id='remember'
+              checked={remember}
+              onChange={handleRememberInput}
+            />
+          </div>
           <button type='submit'>
             Sign in <FontAwesomeIcon icon={faRightToBracket} />
           </button>
         </form>
-      )}
-
-      <button>
-        <Link to='/'>Go back to main page</Link>
-      </button>
-    </section>
+      </section>
+    </div>
   );
 }

@@ -28,7 +28,10 @@ export default function Navigation({ linkTo }) {
         }}
         className={`${styles.navListButton}  ${navHidden ? '' : styles.hidden}`}
       >
-        <FontAwesomeIcon icon={faBars} />
+        <FontAwesomeIcon
+          icon={faBars}
+          className={darkMode ? styles.darkMode : styles.lightMode}
+        />
       </button>
       <div className={`${styles.navList} ${navHidden && styles.hidden}`}></div>
       <div
@@ -53,7 +56,9 @@ export default function Navigation({ linkTo }) {
           {login.isLogged ? (
             <>
               {' '}
-              <p>You are logged as {login.isLogged}</p>
+              <p>
+                You are logged as <br /> <span>{login.isLogged}</span>
+              </p>
               <button>Log out</button>
             </>
           ) : (
