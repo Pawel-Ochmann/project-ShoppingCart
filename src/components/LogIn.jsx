@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/login.module.css';
 import { useContext, useState } from 'react';
 import { darkMode, loggedMode } from '../Context';
@@ -14,7 +14,7 @@ export default function LogIn() {
   const [remember, setRemember] = useState(localStorage.getItem('email') ? true: false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-
+  const history = useNavigate();
 
 
   const handleEmailInput = (e) => {
@@ -68,6 +68,7 @@ export default function LogIn() {
         localStorage.clear();
       }
     }
+    history('/');
   };
 
   return (

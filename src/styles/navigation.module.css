@@ -31,7 +31,7 @@
   &.hidden {
     opacity: 0;
   }
-  &.darkMode {
+  & svg.darkMode {
     color: white;
   }
 }

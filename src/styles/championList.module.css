@@ -1,9 +1,38 @@
+@import url('./variables.css');
+
+.darkMode {
+  background-color: var(--color-dm-background);
+}
+
+h1 {
+  text-transform: uppercase;
+  margin-top: 2rem;
+  border-top: 1px solid var(--color-font-main);
+  border-bottom: 1px solid var(--color-font-main);
+}
+
 .grid {
     color: white;
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+    grid-template-columns: 1fr;
+    padding: var(--padding-main);
 }
 
 .classListContainer {
   background-color: black;
+}
+
+.pagination {
+  font-size: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  button {
+    background: #00000000;
+  }
+  button:disabled {
+    color:rgba(255, 255, 255, 0);
+  }
 }

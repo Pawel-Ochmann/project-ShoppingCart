@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { darkMode, loggedMode } from '../Context';
 import ThemeSwitcher from './ThemeSwitcher';
@@ -11,6 +11,7 @@ export default function Navigation({ linkTo }) {
   const theme = useContext(darkMode);
   const login = useContext(loggedMode);
   const [navHidden, setNavHidden] = useState(true);
+  const navigate = useNavigate();
 
   return (
     // <div className={theme.isDark ? styles.darkMode : styles.lightMode}>
@@ -30,7 +31,7 @@ export default function Navigation({ linkTo }) {
       >
         <FontAwesomeIcon
           icon={faBars}
-          className={darkMode ? styles.darkMode : styles.lightMode}
+          className={theme.isDark ? styles.darkMode : styles.lightMode}
         />
       </button>
       <div className={`${styles.navList} ${navHidden && styles.hidden}`}></div>
@@ -59,7 +60,15 @@ export default function Navigation({ linkTo }) {
               <p>
                 You are logged as <br /> <span>{login.isLogged}</span>
               </p>
-              <button>Log out</button>
+              <button
+                onClick={() => {
+                  login.setIsLogged('');
+                  setNavHidden(true);
+                  navigate('/');
+                }}
+              >
+                Log out
+              </button>
             </>
           ) : (
             <Link to='login'>

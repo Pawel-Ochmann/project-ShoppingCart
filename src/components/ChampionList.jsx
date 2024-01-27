@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState, useRef } from 'react';
 import { darkMode } from '../Context';
+import Navigation from './Navigation';
 import ChampionCart from './ChampionCart';
 import ChampionDetails from './ChampionDetails';
 import styles from '../styles/championList.module.css';
 import '../styles/transitions.css';
 import { CSSTransition } from 'react-transition-group';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft,faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function ChampionList() {
   const theme = useContext(darkMode);
@@ -39,10 +42,13 @@ export default function ChampionList() {
   }, []);
 
   return (
-    <>
-      <h1>Champion List</h1>
-      {!showDetailsPage && (
-        <div className='pagination'>
+    <div className={theme.isDark? styles.darkMode : styles.lightMode}>
+      <Navigation linkTo='/' />
+      <h1>Champions</h1>
+      {showDetailsPage ? (
+        <div className={styles.pagination}></div>
+      ) : (
+        <div className={styles.pagination}>
           <button
             disabled={currentPage === 1}
             onClick={() => {
@@ -53,7 +59,10 @@ export default function ChampionList() {
               setTimeout(() => setRunTransition(true), 500);
             }}
           >
-            Previous
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className={theme.isDark ? styles.darkMode : styles.lightMode}
+            />
           </button>
           <span>{`Page ${currentPage}`}</span>
           <button
@@ -66,7 +75,10 @@ export default function ChampionList() {
               setTimeout(() => setRunTransition(true), 500);
             }}
           >
-            Next
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className={theme.isDark ? styles.darkMode : styles.lightMode}
+            />
           </button>
         </div>
       )}
@@ -99,7 +111,7 @@ export default function ChampionList() {
         </CSSTransition>
       </div>
       {!showDetailsPage && (
-        <div className='pagination'>
+        <div className={styles.pagination}>
           <button
             disabled={currentPage === 1}
             onClick={() => {
@@ -110,7 +122,10 @@ export default function ChampionList() {
               setTimeout(() => setRunTransition(true), 500);
             }}
           >
-            Previous
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className={theme.isDark ? styles.darkMode : styles.lightMode}
+            />
           </button>
           <span>{`Page ${currentPage}`}</span>
           <button
@@ -123,10 +138,13 @@ export default function ChampionList() {
               setTimeout(() => setRunTransition(true), 500);
             }}
           >
-            Next
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className={theme.isDark ? styles.darkMode : styles.lightMode}
+            />
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }
