@@ -42,11 +42,27 @@ export default function ChampionList() {
   }, []);
 
   return (
-    <div className={theme.isDark? styles.darkMode : styles.lightMode}>
+    <div className={theme.isDark ? styles.darkMode : styles.lightMode}>
       <Navigation linkTo='/' />
       <h1>Champions</h1>
       {showDetailsPage ? (
-        <div className={styles.pagination}></div>
+        <div className={styles.pagination}>
+          <button
+            onClick={() => {
+              setRunTransition(false);
+              setTimeout(() => {
+                setShowDetailsPage(null);
+              }, 500);
+              setTimeout(() => setRunTransition(true), 500);
+            }}
+          >
+            {' '}
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className={theme.isDark ? styles.darkMode : styles.lightMode}
+            />
+          </button>
+        </div>
       ) : (
         <div className={styles.pagination}>
           <button
@@ -104,13 +120,32 @@ export default function ChampionList() {
                     detailsHandler={setShowDetailsPage}
                     runTransition={setRunTransition}
                     setImageUrl={setImageUrl}
+                    className={theme.isDark && darkMode}
                   />
                 ))}
             </div>
           )}
         </CSSTransition>
       </div>
-      {!showDetailsPage && (
+      {showDetailsPage ? (
+        <div className={styles.pagination}>
+          <button
+            onClick={() => {
+              setRunTransition(false);
+              setTimeout(() => {
+                setShowDetailsPage(null);
+              }, 500);
+              setTimeout(() => setRunTransition(true), 500);
+            }}
+          >
+            {' '}
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className={theme.isDark ? styles.darkMode : styles.lightMode}
+            />
+          </button>
+        </div>
+      ) : (
         <div className={styles.pagination}>
           <button
             disabled={currentPage === 1}

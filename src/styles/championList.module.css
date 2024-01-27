@@ -11,15 +11,14 @@ h1 {
   border-bottom: 1px solid var(--color-font-main);
 }
 
-.grid {
-    color: white;
+.classListContainer {
+  .grid {
     display: grid;
     grid-template-columns: 1fr;
-    padding: var(--padding-main);
-}
-
-.classListContainer {
-  background-color: black;
+    div:nth-child(odd) {
+      background-color: rgb(207, 207, 207);
+    }
+  }
 }
 
 .pagination {
@@ -33,6 +32,6 @@ h1 {
     background: #00000000;
   }
   button:disabled {
-    color:rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255, 0);
   }
 }

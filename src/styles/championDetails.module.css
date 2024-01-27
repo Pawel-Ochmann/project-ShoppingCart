@@ -1,15 +1,48 @@
 .detailsBox {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    text-align: center;
-    min-height: 100dvh;
-    & img {
-        width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 100dvh;
+  h1 {
+    border: none;
+    font-size: 3rem;
+  }
+  .championTitle {
+    font-size: 1.3rem;
+    font-style: italic;
+    border-bottom: 1px solid var(--color-font-main);
+    line-height: 0.8;
+  }
+  .championDescription {
+    padding: var(--padding-main);
+    font-size: 1.3rem;
+    margin: 2rem 0;
+  }
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 200;
+    margin-bottom: 2rem;
+    font-style: italic;
+    span {
+        text-shadow: 0 0 10px var(--color-font-main),
+               0 0 20px var(--color-font-main),
+               0 0 30px var(--color-font-main),
+               0 0 40px var(--color-font-main),
+               0 0 50px var(--color-font-main),
+               0 0 60px var(--color-font-main),
+               0 0 70px var(--color-font-main),
+               0 0 80px var(--color-font-main);
     }
-    & button {
-        width: max-content;
-        align-self: center;
+  }
+  button {
+    width: max-content;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0.3rem 1rem;
+    font-size: 1.4rem;
+    border: 5px ridge var(--color-font-main);
+    svg {
+      margin-left: 1rem;
     }
+  }
 }
-

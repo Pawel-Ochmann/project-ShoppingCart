@@ -1,0 +1,36 @@
+@import url('./variables.css');
+
+.container {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  max-height: 120px;
+  .nameBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    text-wrap: wrap;
+    font-weight: bold;
+    p {
+      color: rgb(119, 119, 68);
+    }
+  }
+  button {
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 1.7rem;
+    padding: 0 2rem;
+  }
+}
+picture {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  overflow: hidden;
+  img {
+    transform: scale(1.2);
+  }
+}

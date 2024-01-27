@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { darkMode, shopItems } from '../Context';
 import styles from '../styles/championDetails.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function ChampionDetails({
   champion,
   imageUrl,
-  detailsHandler,
-  runTransition,
 }) {
   const { items, setItems } = useContext(shopItems);
   const [isAdded, setIsAdded] = useState(false);
@@ -31,23 +31,18 @@ export default function ChampionDetails({
 
   return (
     <div className={`${styles.detailsBox}`}>
-      <button
-        onClick={() => {
-          runTransition(false);
-          setTimeout(() => {
-            detailsHandler(null);
-          }, 500);
-          setTimeout(() => runTransition(true), 500);
-        }}
-      >
-        Close details
-      </button>
-      <h3>{champion.champion.name}</h3>
-      <p>{champion.champion.title}</p>
-      <p>{champion.champion.blurb}</p>
       <img src={imageUrl} alt='' />
+      <h1>{champion.champion.name}</h1>
+      <p className={styles.championTitle}>{champion.champion.title}</p>
+      <p className={styles.championDescription}>{champion.champion.blurb}</p>
+      <h2>Price: <span>50$</span></h2>
       <button onClick={handlePurchase}>
-        {isAdded ? 'Remove' : 'Purchase'}
+        {isAdded ? 'Remove from Cart' : 'Add to cart'}
+        {isAdded ? (
+          <FontAwesomeIcon icon={faTrash} />
+        ) : (
+          <FontAwesomeIcon icon={faPlus} />
+        )}
       </button>
     </div>
   );
