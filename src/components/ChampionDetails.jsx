@@ -13,13 +13,15 @@ export default function ChampionDetails({
   const theme = useContext(darkMode);
 
   useEffect(() => {
-    const checkItems = items.find((item) => item === champion);
+    if (items.length === 0) {setIsAdded(false); return} 
+    const checkItems = items.find((item) => item.champion.id === champion.champion.id);
+
     setIsAdded(checkItems);
   }, [items, champion]);
 
   const handlePurchase = () => {
     if (isAdded) {
-      const index = items.findIndex((item) => item === champion);
+      const index = items.findIndex((item) => item.champion.id === champion.champion.id);
       const updatedItems = [...items];
       updatedItems.splice(index, 1);
       setItems(updatedItems);

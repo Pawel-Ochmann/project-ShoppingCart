@@ -11,15 +11,30 @@
 }
 
 .cart {
-  width: 200px;
-  min-height: 500px;
-  background-color: rgb(40, 56, 12);
-  color: white;
+  width: 300px;
+  background-color: rgb(20, 20, 20);
+  font-family: nav, sans-serif;
+  padding: 1rem;
+  min-height: 100dvh;
+  color: rgb(214, 203, 203);
   position: fixed;
   top: 0;
   right: 0;
   transition: 0.5s;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .cartListHeader {
+    display: flex;
+    justify-content: space-between;
+    button {
+      background-color: transparent;
+      color: grey;
+      font-weight: 200;
+      text-transform: none;
+    }
+  }
 }
 .cartHidden {
   transform: translateX(500px);
@@ -31,13 +46,40 @@
   gap: 1rem;
 }
 
-.champinBox {
-  display: flex;
-  flex-direction: column;
+.championBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #333333;
+  padding: 1rem;
+  border-radius: 1rem;
+  .imageBox {
+    border-radius: 1rem;
+    overflow: hidden;
+    img {
+      transform: scale(1.2);
+    }
+  }
+  .detailsBox {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.5rem;
+    button {
+      width: max-content;
+      background-color: black;
+      border-radius: 100rem;
+      aspect-ratio: 1;
+      color: grey;
+    }
+    h3 {
+      color: white;
+      margin-top: auto;
+    }
+  }
 }
 
 .backdrop {
-  transition: .5s;
+  transition: 0.5s;
 }
 .backdropVisible {
   position: fixed;
@@ -47,4 +89,17 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
+}
+
+.purchaseBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  button {
+    width: 100%;
+    background-color: #333333;
+    color: white;
+    border-radius: .3rem;
+    cursor: pointer;
+  }
 }

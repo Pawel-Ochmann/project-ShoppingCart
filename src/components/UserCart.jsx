@@ -12,7 +12,7 @@ export default function UserCart() {
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      console.log(event.target)
+      console.log(event.target);
       const isXButton =
         event.target.tagName.toLowerCase() === 'button' &&
         event.target.innerText === 'x';
@@ -42,14 +42,16 @@ export default function UserCart() {
   };
 
   const removeItem = (champion) => {
-    const index = items.findIndex((item) => item === champion);
+    const index = items.findIndex(
+      (item) => item.champion.id === champion.champion.id
+    );
     const updatedItems = [...items];
     updatedItems.splice(index, 1);
     setItems(updatedItems);
   };
 
   return (
-    <>
+    <div className={styles.cartContainer}>
       <div className={styles.cartIcon}>
         <FontAwesomeIcon
           icon={faCartShopping}
@@ -58,41 +60,58 @@ export default function UserCart() {
         />
         <p>{items.length < 1 ? '' : `(${items.length})`}</p>
       </div>
-      <div className={`${styles.backdrop} ${!isClosed && styles.backdropVisible}`}></div>
+      <div
+        className={`${styles.backdrop} ${!isClosed && styles.backdropVisible}`}
+      ></div>
       <div
         ref={cartRef}
-        className={`${styles.cart} ${isClosed ? styles.cartHidden : styles.cartVisible}`}
+        className={`${styles.cart} ${
+          isClosed ? styles.cartHidden : styles.cartVisible
+        }`}
       >
-        <h2>{items.length} {items.length === 1 ? 'Champion' : 'Champions'}</h2>
-        <button
-          onClick={() => {
-            setItems([]);
-          }}
-        >
-          Clear items
-        </button>
+        <div className={styles.cartListHeader}>
+          <h2>
+            {items.length} {items.length === 1 ? 'Champion' : 'Champions'}
+          </h2>
+          <button
+            onClick={() => {
+              const newItems = [];
+              setItems(newItems);
+            }}
+          >
+            Clear
+          </button>
+        </div>
         <div className={styles.itemList}>
           {items.map((champion) => (
             <div className={styles.championBox} key={champion.champion.key}>
-              <h3>{champion.champion.name}</h3>
-              <img
-                src={`https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${champion.champion.name}.png`}
-                alt=''
-              />
-              <button
-                onClick={() => {
-                  removeItem(champion);
-                }}
-              >
-                x
-              </button>
-              <p>Price: 50$</p>
+              <div className={styles.imageBox}>
+                <img
+                  src={`https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${champion.champion.name}.png`}
+                  alt=''
+                />
+              </div>
+              <div className={styles.detailsBox}>
+                <button
+                  onClick={() => {
+                    removeItem(champion);
+                  }}
+                >
+                  x
+                </button>
+                <h3>{champion.champion.name}</h3>
+                <p>Price: 50$</p>
+              </div>
             </div>
           ))}
         </div>
-        <p>{`Total: ${items.length * 50}$`}</p>
-        <button>Buy</button>
+        {items.length > 0 && (
+          <div className={styles.purchaseBox}>
+            <p>{`Total: ${items.length * 50}$`}</p>
+            <button>Buy</button>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
