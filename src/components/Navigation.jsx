@@ -49,18 +49,22 @@ export default function Navigation({ linkTo }) {
         >
           X
         </button>
-        <Link to={linkTo}>
-          <button>{linkTo === 'champions' ? 'Store' : 'Main Page'}</button>
-        </Link>
+        <button
+          onClick={() => {
+            linkTo === 'champions' ? navigate('/champions') : navigate('/');
+          }}
+        >
+          {linkTo === 'champions' ? 'Store' : 'Main Page'}
+        </button>
         <ThemeSwitcher />
         <div className={styles.loginContainer}>
           {login.isLogged ? (
             <>
               {' '}
               <p>
-                You are logged as <br /> <span>{login.isLogged}</span>
+                <span>{login.isLogged}</span>
               </p>
-              <button
+              <button className={styles.logOutButton}
                 onClick={() => {
                   login.setIsLogged('');
                   setNavHidden(true);
@@ -71,9 +75,15 @@ export default function Navigation({ linkTo }) {
               </button>
             </>
           ) : (
-            <Link to='login'>
-              <button data-testid='login'> Log in</button>
-            </Link>
+            <button
+              data-testid='login'
+              onClick={() => {
+                navigate('/login');
+              }}
+            >
+              {' '}
+              Log in
+            </button>
           )}
         </div>
       </div>

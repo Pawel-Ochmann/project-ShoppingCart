@@ -56,3 +56,12 @@ form {
         width: 1.5rem;
     }
 }
+
+@media screen and (min-width:700px) {
+  form {
+    margin-top: 10dvh;
+    max-width: 900px;
+    width: 80%;
+    gap: 5dvh;
+  };
+}

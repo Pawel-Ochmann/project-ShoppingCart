@@ -15,7 +15,9 @@
   background-color: rgb(20, 20, 20);
   font-family: nav, sans-serif;
   padding: 1rem;
+  max-height: 100dvh;
   min-height: 100dvh;
+  overflow: scroll;
   color: rgb(214, 203, 203);
   position: fixed;
   top: 0;
@@ -99,7 +101,15 @@
     width: 100%;
     background-color: #333333;
     color: white;
-    border-radius: .3rem;
+    border-radius: 0.3rem;
     cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .cartContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
   }
 }

@@ -19,7 +19,7 @@
   width: 4rem;
   height: 4rem;
   border: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: black;
   position: fixed;
   bottom: 0;
@@ -103,7 +103,7 @@
   }
   & button {
     color: white;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: nav, sans-serif;
     text-transform: uppercase;
     background-color: rgba(0, 0, 0, 0);
@@ -123,8 +123,70 @@
       & span {
         font-family: main, serif;
         color: var(--color-dm-font-m);
-         text-shadow: 0 0 10px var(--color-dm-font-m);
+        text-shadow: 0 0 10px var(--color-dm-font-m);
       }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .navListButton {
+    display: none;
+  }
+  .navListContainer {
+    .xButton {
+      display: none;
+    }
+    position: static;
+    &.hidden,
+    &.visible {
+      height: 100px;
+      padding: 0;
+      transform: translate(0, 0);
+      align-items: center;
+      flex-direction: row;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 0 1rem;
+      button {
+        font-size: 1.3rem;
+        color: var(--color-font-main);
+      }
+    }
+    .loginContainer {
+      p {
+        padding: 0;
+      }
+      .logOutButton {
+        position: absolute;
+        transition: opacity 0.5s, transform 0.5s;
+        left: 60%;
+        bottom: 0;
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      &:hover .logOutButton {
+        display: block;
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+  button,
+  a {
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      text-shadow: 0 0 10px var(--color-font-main),
+        0 0 20px var(--color-font-main), 0 0 30px var(--color-font-main),
+        0 0 40px var(--color-font-main);
+    }
+  }
+  img,
+  svg {
+    transition: 0.5s;
+    &:hover {
+      filter: brightness(1.2);
     }
   }
 }
