@@ -87,7 +87,7 @@ export default function UserCart() {
             <div className={styles.championBox} key={champion.champion.key}>
               <div className={styles.imageBox}>
                 <img
-                  src={`https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${champion.champion.name}.png`}
+                  src={`https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/${champion.champion.id}.png`}
                   alt=''
                 />
               </div>
@@ -108,7 +108,7 @@ export default function UserCart() {
         {items.length > 0 && (
           <div className={styles.purchaseBox}>
             <p>{`Total: ${items.length * 50}$`}</p>
-            <button>Buy</button>
+            <button onClick={()=>{window.alert('Congratulations! Your purchase has been made!')}}>Buy</button>
           </div>
         )}
       </div>

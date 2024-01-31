@@ -13,7 +13,8 @@ body {
 }
 
 main {
-  & h1, & p {
+  & h1,
+  & p {
     padding: var(--padding-main);
   }
   & h1 {
@@ -23,10 +24,10 @@ main {
     font-size: 1.2rem;
   }
   .container {
-  padding: 2rem 0;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -38,5 +39,7 @@ img {
   background-color: var(--color-dm-background);
 }
 
-.lightMode {
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
 }

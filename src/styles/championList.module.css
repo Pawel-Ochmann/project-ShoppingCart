@@ -5,6 +5,8 @@
 }
 
 h1 {
+  max-width: 1000px;
+  margin: 0 auto;
   text-transform: uppercase;
   margin-top: 2rem;
   border-top: 1px solid var(--color-font-main);
@@ -33,5 +35,20 @@ h1 {
   }
   button:disabled {
     color: rgba(255, 255, 255, 0);
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .classListContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    .grid {
+      grid-template-columns: repeat(5, 1fr);
+      justify-content: center;
+      gap: 1.5rem 0.5rem;
+      div:nth-child(odd) {
+        background-color: initial;
+      }
+    }
   }
 }
